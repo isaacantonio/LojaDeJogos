@@ -18,7 +18,7 @@ public class AnuncioService {
     }
 
     public List<Anuncio> buscarAnunciosPorFiltro(String filtro) {
-        return anuncioRepository.buscarPorFiltro(filtro);
+        return anuncioRepository.bucasrGeral(filtro);
     }
 
     public List<Anuncio> buscarAnunciosPorCategoria(String categoria) {

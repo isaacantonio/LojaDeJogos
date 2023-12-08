@@ -13,9 +13,8 @@ public interface AnuncioRepository extends JpaRepository<Anuncio, Long> {
 
     List<Anuncio> findByTituloContainingIgnoreCaseOrCategoriaContainingIgnoreCase(String titulo, String categoria);
 
-    // Depois melhorar essa consulta
-    @Query("SELECT a FROM Anuncio a WHERE LOWER(a.titulo) LIKE LOWER(CONCAT('%', :filtro, '%')) OR LOWER(a.categoria) LIKE LOWER(CONCAT('%', :filtro, '%'))")
-    List<Anuncio> buscarPorFiltro(@Param("filtro") String filtro);
+    @Query("SELECT a FROM Anuncio a WHERE LOWER(a.titulo) LIKE LOWER(CONCAT('%', :filtro, '%')) OR LOWER(a.categoria) LIKE LOWER(CONCAT('%', :filtro, '%')) OR LOWER(a.tags) LIKE LOWER(CONCAT('%', :filtro, '%'))")
+    List<Anuncio> bucasrGeral(@Param("filtro") String filtro);
 
     List<Anuncio> findByTituloContainingIgnoreCaseAndCategoriaContainingIgnoreCase(String titulo, String categoria);
 }

@@ -8,7 +8,9 @@ import proj.ifpb.api.model.Role;
 import proj.ifpb.api.model.Usuario;
 import proj.ifpb.api.service.UsuarioService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -44,19 +46,24 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> realizarLogin(@RequestBody Usuario usuario) {
+    public ResponseEntity<Object> realizarLogin(@RequestBody Usuario usuario) {
         Optional<Usuario> usuarioOptional = usuarioService.buscarPorEmail(usuario.getEmail());
 
         if (usuarioOptional.isPresent()) {
             Usuario storedUsuario = usuarioOptional.get();
 
             if (storedUsuario.getSenha().equals(usuario.getSenha())) {
-
                 boolean isAdmin = storedUsuario.getRoles().stream().anyMatch(role -> role == Role.ADMINISTRADOR);
-
                 String papel = isAdmin ? "administrador" : "cliente";
 
-                return ResponseEntity.ok(papel.toUpperCase());
+                // Construa um objeto de resposta sem incluir a senha
+                Map<String, Object> response = new HashMap<>();
+                response.put("papel", papel.toUpperCase());
+                response.put("id", storedUsuario.getId());
+                response.put("nome", storedUsuario.getNome());
+                response.put("email", storedUsuario.getEmail());
+
+                return ResponseEntity.ok(response);
             } else {
                 return ResponseEntity.badRequest().body("Senha incorreta");
             }
