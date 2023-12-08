@@ -57,7 +57,6 @@ public class UsuarioController {
                 boolean isAdmin = storedUsuario.getRoles().stream().anyMatch(role -> role == Role.ADMINISTRADOR);
                 String papel = isAdmin ? "administrador" : "cliente";
 
-                // Construa um objeto de resposta sem incluir a senha
                 Map<String, Object> response = new HashMap<>();
                 response.put("papel", papel.toUpperCase());
                 response.put("id", storedUsuario.getId());
