@@ -1,0 +1,57 @@
+.productCard {
+    border-radius: 12px;
+    width: 212px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardImage {
+    background-color: black;
+    border-radius: 12px 12px 0 0;
+    width: 212px;
+    height: 150px;
+}
+
+.cardImage img {
+    border-radius: 12px 12px 0 0;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.productCard h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 14pt;
+    text-overflow: ellipsis;
+}
+
+.descriptionContainer {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    padding: 6px;
+    justify-content: space-between;
+    border-radius: 0 0 12px 12px;
+    background: #202B39;
+    border-radius: 0 0 12px 12px;
+}
+
+.pataformaicon {
+    opacity: 0.5;
+    width: 20px;
+    filter: invert(1);
+}
+
+.containerPlataformaIcon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cartButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

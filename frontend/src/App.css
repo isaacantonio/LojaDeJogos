@@ -1,0 +1,22 @@
+.containerHome {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 1fr;
+}
+
+.containercards {
+    display: flex;
+    gap: 6px;
+    padding: 16px 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
