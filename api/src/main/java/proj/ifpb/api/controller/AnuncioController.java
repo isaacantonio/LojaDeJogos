@@ -8,6 +8,7 @@ import proj.ifpb.api.service.AnuncioService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/anuncios")
 public class AnuncioController {

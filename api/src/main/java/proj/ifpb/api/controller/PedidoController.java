@@ -10,6 +10,7 @@ import proj.ifpb.api.service.UsuarioService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/pedidos")
 public class PedidoController {
