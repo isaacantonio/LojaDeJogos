@@ -8,10 +8,11 @@
 
 .containercards {
     display: flex;
-    gap: 6px;
+    gap: 16px;
     padding: 16px 28px;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 1000px;
 }
 
 .filters {
@@ -19,4 +20,34 @@
     align-items: center;
     justify-content: center;
     gap: 12px;
+}
+
+.optionLoginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    font-size: 26px;
+    color: #ffff;
+}
+
+.optionLoginContainer span {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.loginContainer {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 500px) {
+    .filters {
+        flex-direction: column-reverse;
+        gap: 0;
+    }
 }
