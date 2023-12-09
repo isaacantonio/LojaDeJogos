@@ -1,13 +1,15 @@
+import { useContext } from "react";
 import "./style.css";
+import { ApiContext } from "../../context/Api";
 function LoginForm() {
+  const { login } = useContext(ApiContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     let values = {
       email: e.target[0].value,
-      password: e.target[1].value,
+      senha: e.target[1].value,
     };
-
-    console.log(values);
+    login(values);
   };
 
   return (

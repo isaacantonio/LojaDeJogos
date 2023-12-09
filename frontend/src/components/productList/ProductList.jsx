@@ -60,41 +60,6 @@ function ProductList() {
           plataform={["ps", "windows", "xbox"]}
           id={3}
         />
-        <ProductCard
-          image="https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000014724/72ce0a17215521a167c3da579db4cc48a2f7a52eacc81ad985ba20fd6817fdc2"
-          price={"249,99"}
-          title="Hogwarts Legacy"
-          plataform={["ps", "windows", "xbox"]}
-          id={3}
-        />
-        <ProductCard
-          image="https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000014724/72ce0a17215521a167c3da579db4cc48a2f7a52eacc81ad985ba20fd6817fdc2"
-          price={"249,99"}
-          title="Hogwarts Legacy"
-          plataform={["ps", "windows", "xbox"]}
-          id={3}
-        />
-        <ProductCard
-          image="https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000014724/72ce0a17215521a167c3da579db4cc48a2f7a52eacc81ad985ba20fd6817fdc2"
-          price={"249,99"}
-          title="Hogwarts Legacy"
-          plataform={["ps", "windows", "xbox"]}
-          id={3}
-        />
-        <ProductCard
-          image="https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000014724/72ce0a17215521a167c3da579db4cc48a2f7a52eacc81ad985ba20fd6817fdc2"
-          price={"249,99"}
-          title="Hogwarts Legacy"
-          plataform={["ps", "windows", "xbox"]}
-          id={3}
-        />
-        <ProductCard
-          image="https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000014724/72ce0a17215521a167c3da579db4cc48a2f7a52eacc81ad985ba20fd6817fdc2"
-          price={"249,99"}
-          title="Hogwarts Legacy"
-          plataform={["ps", "windows", "xbox"]}
-          id={3}
-        />
       </div>
     </>
   );

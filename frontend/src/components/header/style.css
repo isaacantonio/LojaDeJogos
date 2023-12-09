@@ -31,11 +31,13 @@
     align-items: center;
     justify-content: center;
     border-top: 2px transparent solid;
+    color: #fff;
 }
 
 
 .cartButtonHeader:hover {
     border-top: 2px rgb(231, 18, 61) solid;
+    color: #fff;
 }
 
 .login-cart {
@@ -53,8 +55,10 @@
     justify-content: center;
     width: 80px;
     cursor: pointer;
+    color: #fff;
 }
 
 .loginButton:hover {
+    color: #fff;
     border-top: 2px rgb(231, 18, 61) solid;
 }

@@ -36,15 +36,15 @@ export function CartProvider({ children }) {
   };
 
   const removeCartItem = (value) => {
-    let saveValue = cartStore;
+    let saveValue = [...cartStore];
     let flag = -1;
-    cartStore.forEach((item, index) => {
+    saveValue.forEach((item, index) => {
       if (item.id === value.id) {
         flag = index;
       }
     });
     if (flag !== -1) {
-      saveValue.pop(flag);
+      saveValue.splice(flag, 1);
       setCartStore("");
       setTimeout(() => {
         setCartStore(saveValue);
@@ -53,7 +53,7 @@ export function CartProvider({ children }) {
     }
   };
   return (
-    <CartContex.Provider value={{ cartStore, saveCartItem }}>
+    <CartContex.Provider value={{ cartStore, saveCartItem, removeCartItem }}>
       {children}
     </CartContex.Provider>
   );

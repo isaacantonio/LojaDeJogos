@@ -4,6 +4,7 @@
     height: 100vh;
     grid-template-columns: 1fr;
     grid-template-rows: 60px 1fr;
+    overflow: auto;
 }
 
 .containercards {
@@ -44,6 +45,20 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.productContainer {
+    background-color: #202B39;
+    width: 60vw;
+    margin: 16px 0;
+    border-radius: 8px;
+    min-height: 225px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 16pt;
+    min-width: 350px;
+}
+
 
 @media (max-width: 500px) {
     .filters {

@@ -1,14 +1,17 @@
+import { useContext } from "react";
 import "./style.css";
+import { ApiContext } from "../../context/Api";
 function SingUpForm() {
+  const { createUser } = useContext(ApiContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     let values = {
       nome: e.target[0].value,
       email: e.target[1].value,
-      password: e.target[2].value,
+      senha: e.target[2].value,
+      roles: ["CLIENTE"],
     };
-
-    console.log(values);
+    createUser(values);
   };
 
   return (

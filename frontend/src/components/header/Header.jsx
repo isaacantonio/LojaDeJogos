@@ -5,20 +5,19 @@ import { CartContex } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 function Header() {
   const { cartStore } = useContext(CartContex);
-  console.log(cartStore.length);
   return (
     <div className="header">
-      <Link to={""}>
-        <div>LOGO</div>
+      <Link to={""} style={{ color: "#fff" }}>
+        <div>Loja de Jogos</div>
       </Link>
       <div className="login-cart">
         <Link className="loginButton" to={"/login"}>
           <div>Entrar</div>
         </Link>
-        <div className="cartButtonHeader">
+        <Link className="cartButtonHeader" to={"/cart"}>
           <ShoppingCartIcon />
           <div className="cartCount">{cartStore.length}</div>
-        </div>
+        </Link>
       </div>
     </div>
   );
