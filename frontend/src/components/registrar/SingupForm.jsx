@@ -28,15 +28,15 @@ function SingUpForm() {
       <form onSubmit={handleSubmit} className="formContainer">
         <div className="inputContainer">
           <label>Nome</label>
-          <input name="nome" type="text" />
+          <input name="nome" required type="text" />
         </div>
         <div className="inputContainer">
           <label>Email</label>
-          <input name="email" type="text" />
+          <input name="email" type="email" required />
         </div>
         <div className="inputContainer">
           <label>Senha</label>
-          <input name="password" type="password" />
+          <input name="password" required type="password" />
         </div>
         <button>Criar</button>
       </form>

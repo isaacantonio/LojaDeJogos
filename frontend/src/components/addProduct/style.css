@@ -1,0 +1,27 @@
+.formAddProductContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    width: 100%;
+    gap: 26px;
+    background-color: #202B39;
+    border-radius: 12px;
+}
+
+.inputAddProductContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.inputAddProductContainer input {
+    height: 30px;
+}
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    border-color: #fff !important;
+}
+
+.MuiFormControl-root css-1vjkm7y-MuiFormControl-root {
+    margin: 0 !important;
+}

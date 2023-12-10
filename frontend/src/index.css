@@ -119,3 +119,7 @@ button:hover {
 .css-o943dk-MuiFormLabel-root-MuiInputLabel-root {
   color: #fff !important;
 }
+
+.rnc__notification-container--top-right {
+  top: 64px
+}

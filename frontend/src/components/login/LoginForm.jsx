@@ -30,11 +30,11 @@ function LoginForm() {
       <form onSubmit={handleSubmit} className="formContainer">
         <div className="inputContainer">
           <label>Email</label>
-          <input name="email" type="email" />
+          <input name="email" required type="email" />
         </div>
         <div className="inputContainer">
           <label>Senha</label>
-          <input name="password" type="password" />
+          <input name="password" required type="password" />
         </div>
         <button>Entrar</button>
       </form>

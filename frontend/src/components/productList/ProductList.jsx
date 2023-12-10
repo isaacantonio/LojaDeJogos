@@ -1,13 +1,22 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ProductCard from "../productCard/ProductCard";
+import { ApiContext } from "../../context/Api";
 
 function ProductList() {
+  const { getProducts } = useContext(ApiContext);
+  const [teste, setTESTE] = useState("");
   const [plataformaFilter, setPlataformaFiltro] = useState("");
   const handleChange = (event) => {
     setPlataformaFiltro(event.target.value);
   };
+  const test = async () => {
+    let resp = await getProducts();
+    setTESTE(resp[0].fotos[0]);
+    console.log(resp);
+  };
+  useEffect(() => test, []);
   return (
     <>
       <div className="filters">
@@ -40,7 +49,7 @@ function ProductList() {
       </div>
       <div className="containercards">
         <ProductCard
-          image="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png"
+          image={teste}
           price={"99,99"}
           title="Grand Theft Auto V"
           plataform={["ps", "windows", "xbox"]}

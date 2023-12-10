@@ -25,6 +25,26 @@ export function ApiProvider({ children }) {
     }
   };
 
+  const getProducts = async () => {
+    try {
+      let resp = await axios.get(baseurl + "anuncios/listar");
+      return resp.data;
+    } catch (error) {
+      console.log(error);
+      return "error";
+    }
+  };
+
+  const createProduct = async (data) => {
+    try {
+      await axios.post(baseurl + "anuncios/criar", data);
+      return "success";
+    } catch (error) {
+      console.log(error);
+      return "error";
+    }
+  };
+
   const login = async (data) => {
     try {
       let response = await axios.post(baseurl + "usuarios/login", data);
@@ -38,7 +58,9 @@ export function ApiProvider({ children }) {
   };
 
   return (
-    <ApiContext.Provider value={{ createUser, login, user }}>
+    <ApiContext.Provider
+      value={{ createUser, login, user, createProduct, getProducts }}
+    >
       {children}
     </ApiContext.Provider>
   );
