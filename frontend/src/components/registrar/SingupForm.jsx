@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import "./style.css";
 import { ApiContext } from "../../context/Api";
+import { useNavigate } from "react-router-dom";
+import { errorNotification, successNotification } from "../notification";
 function SingUpForm() {
+  const navigate = useNavigate();
   const { createUser } = useContext(ApiContext);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let values = {
       nome: e.target[0].value,
@@ -11,7 +14,13 @@ function SingUpForm() {
       senha: e.target[2].value,
       roles: ["CLIENTE"],
     };
-    createUser(values);
+    let resp = await createUser(values);
+    if (resp === "success") {
+      successNotification("Conta criada com sucesso!");
+      navigate(0);
+    } else {
+      errorNotification("Erro ao criar conta!", "Por favor, tente novamente.");
+    }
   };
 
   return (

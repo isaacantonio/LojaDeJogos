@@ -1,15 +1,28 @@
 import { useContext } from "react";
 import "./style.css";
 import { ApiContext } from "../../context/Api";
+import { useNavigate } from "react-router-dom";
+import { errorNotification, successNotification } from "../notification";
 function LoginForm() {
+  const navigate = useNavigate();
   const { login } = useContext(ApiContext);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let values = {
       email: e.target[0].value,
       senha: e.target[1].value,
     };
-    login(values);
+    let response = await login(values);
+    console.log(response);
+    if (response === "success") {
+      navigate("/");
+      successNotification("Login realizado com sucesso!");
+    } else {
+      errorNotification(
+        "Erro ao realizar login!",
+        "Por favor, tente novamente."
+      );
+    }
   };
 
   return (
