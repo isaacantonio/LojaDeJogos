@@ -58,4 +58,11 @@ public class AnuncioController {
         Anuncio anuncioAtualizado = anuncioService.editarAnuncio(id, anuncio);
         return ResponseEntity.ok(anuncioAtualizado);
     }
+
+    @GetMapping("/buscarPorPlataformaEFiltro")
+    public ResponseEntity<List<Anuncio>> buscarPorPlataformaEFiltro(
+            @RequestParam(required = false) String plataforma, @RequestParam String filtro) {
+        List<Anuncio> anuncios = anuncioService.buscarPorPlataformaEFiltro(plataforma, filtro);
+        return ResponseEntity.ok(anuncios);
+    }
 }

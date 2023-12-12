@@ -52,4 +52,8 @@ public class AnuncioService {
             return null;
         }
     }
+
+    public List<Anuncio> buscarPorPlataformaEFiltro(String plataforma, String filtro) {
+        return anuncioRepository.buscarPorPlataformaEFiltro(plataforma, filtro);
+    }
 }
