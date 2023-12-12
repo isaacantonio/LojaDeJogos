@@ -123,3 +123,7 @@ button:hover {
 .rnc__notification-container--top-right {
   top: 64px
 }
+
+.css-1kap556-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon {
+  color: #3b4a58 !important;
+}

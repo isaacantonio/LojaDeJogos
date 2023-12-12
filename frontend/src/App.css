@@ -64,6 +64,7 @@
     grid-template-columns: 200px 60vw;
     gap: 22px;
     margin-top: 26px;
+    justify-content: center;
 }
 
 .dashboardMenu div {
@@ -106,4 +107,18 @@
         flex-direction: column;
         margin-bottom: 16px;
     }
+}
+
+.css-11xur9t-MuiPaper-root-MuiTableContainer-root {
+    height: 640px !important;
+    background-color: #202B39 !important;
+}
+
+.css-1ex1afd-MuiTableCell-root,
+.css-177gid-MuiTableCell-root,
+.css-fikjyc-MuiTableCell-root-MuiTablePagination-root,
+.css-78trlr-MuiButtonBase-root-MuiIconButton-root.Mui-disabled,
+.css-10bey84-MuiSvgIcon-root-MuiNativeSelect-icon,
+.css-i4bv87-MuiSvgIcon-root {
+    color: #fff !important;
 }

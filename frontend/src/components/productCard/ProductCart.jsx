@@ -21,10 +21,10 @@ function ProductCart({ data }) {
           <div className="containerPlataformaIcon">
             {product.plataform.map((value, index) => {
               let icon = windows;
-              if (value === "ps") {
+              if (value === "Playstation") {
                 icon = ps;
               }
-              if (value === "xbox") {
+              if (value === "Xbox") {
                 icon = xbox;
               }
               return <img key={index} className="pataformaicon" src={icon} />;

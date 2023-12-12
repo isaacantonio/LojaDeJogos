@@ -4,17 +4,34 @@ import ProductCart from "../components/productCard/ProductCart";
 import { ApiContext } from "../context/Api";
 import { ReactNotifications, Store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import { errorNotification } from "../components/notification";
+import {
+  errorNotification,
+  successNotification,
+} from "../components/notification";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
-  const { cartStore } = useContext(CartContex);
-  const { user } = useContext(ApiContext);
+  const { cartStore, removeAllCartItem } = useContext(CartContex);
+  const { user, createOrder } = useContext(ApiContext);
   const navigate = useNavigate();
   let total = 0;
-  const handleFinalizeOrder = () => {
+  const handleFinalizeOrder = async () => {
     if (user.id !== "") {
-      console.log("-==");
+      let ids = [];
+      cartStore.forEach((value) => {
+        ids.push(value.id);
+      });
+      // let resp = await createOrder({
+      //   anuncioIds: ids,
+      //   clienteId: user.id,
+      //   status: "Pendente",
+      // });
+      // console.log(resp);
+      removeAllCartItem();
+      successNotification(
+        "Pedido feito com sucesso!",
+        "Para ver seus pedidos, acesse a aba de 'Meus Pedidos'."
+      );
     } else {
       errorNotification(
         "Erro ao finalizar pedido",
@@ -56,7 +73,8 @@ function Cart() {
             <span>Total</span>
             <span>
               {cartStore.forEach((element) => {
-                let price = element.price.replace(",", ".");
+                let price = element.price;
+
                 total += parseFloat(price);
               })}
               R$ {total.toString().replace(".", ",")}

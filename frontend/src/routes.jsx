@@ -4,6 +4,8 @@ import Login from "./pages/Login";
 import ProductList from "./components/productList/ProductList";
 import Cart from "./pages/Cart";
 import Dashboard from "./pages/Dashboard";
+import AddProduct from "./components/addProduct/AddProduct";
+import Allproducts from "./components/allProducts/AllProducts";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,9 +23,19 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    children: [
       {
-        path: "/dashboard",
-        element: <Dashboard />,
+        path: "allproduct",
+        element: <Allproducts />,
+      },
+      {
+        path: "addproduct",
+        element: <AddProduct />,
       },
     ],
   },

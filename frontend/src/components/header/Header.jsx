@@ -10,7 +10,7 @@ function Header() {
   const { user } = useContext(ApiContext);
   return (
     <div className="header">
-      <Link to={""} style={{ color: "#fff" }}>
+      <Link to={"/"} style={{ color: "#fff" }}>
         <div>Loja de Jogos</div>
       </Link>
       <div className="login-cart">

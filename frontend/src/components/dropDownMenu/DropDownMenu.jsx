@@ -7,10 +7,12 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useContext, useState } from "react";
 import { ApiContext } from "../../context/Api";
 import { useNavigate } from "react-router-dom";
+import { CartContex } from "../../context/CartContext";
 
 function DropDownMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const { user } = useContext(ApiContext);
+  const { removeAllCartItem } = useContext(CartContex);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
   const handleClick = (event) => {
@@ -21,10 +23,11 @@ function DropDownMenu() {
     if (value === 2) {
       localStorage.removeItem("user");
       navigate(0);
+      removeAllCartItem();
     } else if (value === 1) {
       navigate("/meuspedidos");
     } else if (value === 3) {
-      navigate("/dashboard");
+      navigate("/dashboard/allproduct");
     }
     setAnchorEl(null);
   };
@@ -76,16 +79,10 @@ function DropDownMenu() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem value={1} onClick={handleClose}>
-          <ListItemIcon>
-            <TocIcon />
-          </ListItemIcon>
           Meus Pedidos
         </MenuItem>
         {user.papel === "ADMINISTRADOR" && (
           <MenuItem value={3} onClick={handleClose}>
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
             Gerenciar produtos
           </MenuItem>
         )}

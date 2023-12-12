@@ -52,8 +52,15 @@ export function CartProvider({ children }) {
       localStorage.setItem("cart", JSON.stringify(saveValue));
     }
   };
+
+  const removeAllCartItem = () => {
+    setCartStore([]);
+    localStorage.setItem("cart", JSON.stringify([]));
+  };
   return (
-    <CartContex.Provider value={{ cartStore, saveCartItem, removeCartItem }}>
+    <CartContex.Provider
+      value={{ cartStore, saveCartItem, removeCartItem, removeAllCartItem }}
+    >
       {children}
     </CartContex.Provider>
   );

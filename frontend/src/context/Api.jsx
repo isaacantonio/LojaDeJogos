@@ -35,9 +35,49 @@ export function ApiProvider({ children }) {
     }
   };
 
+  const getFindProducts = async (plataforma, filter) => {
+    try {
+      let rota =
+        baseurl +
+        "anuncios/buscarPorPlataformaEFiltro?plataforma=" +
+        plataforma +
+        "&filtro=" +
+        filter;
+
+      if (plataforma === "") {
+        rota = baseurl + "anuncios/buscarPorPlataformaEFiltro?filtro=" + filter;
+      }
+      let resp = await axios.get(rota);
+      return resp.data;
+    } catch (error) {
+      console.log(error);
+      return "error";
+    }
+  };
+
+  const deleteProduct = async (id) => {
+    try {
+      await axios.delete(baseurl + "anuncios/excluir/" + id);
+      return "success";
+    } catch (error) {
+      console.log(error);
+      return "error";
+    }
+  };
+
   const createProduct = async (data) => {
     try {
       await axios.post(baseurl + "anuncios/criar", data);
+      return "success";
+    } catch (error) {
+      console.log(error);
+      return "error";
+    }
+  };
+
+  const createOrder = async (data) => {
+    try {
+      await axios.post(baseurl + "pedidos/criar", data);
       return "success";
     } catch (error) {
       console.log(error);
@@ -59,7 +99,16 @@ export function ApiProvider({ children }) {
 
   return (
     <ApiContext.Provider
-      value={{ createUser, login, user, createProduct, getProducts }}
+      value={{
+        createUser,
+        login,
+        user,
+        createProduct,
+        getProducts,
+        deleteProduct,
+        createOrder,
+        getFindProducts,
+      }}
     >
       {children}
     </ApiContext.Provider>

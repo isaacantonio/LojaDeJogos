@@ -5,24 +5,39 @@ import ProductCard from "../productCard/ProductCard";
 import { ApiContext } from "../../context/Api";
 
 function ProductList() {
-  const { getProducts } = useContext(ApiContext);
-  const [teste, setTESTE] = useState("");
+  const { getProducts, getFindProducts } = useContext(ApiContext);
+  const [products, setProducts] = useState([]);
+  const [filter, setFilter] = useState("");
   const [plataformaFilter, setPlataformaFiltro] = useState("");
   const handleChange = (event) => {
     setPlataformaFiltro(event.target.value);
   };
   const test = async () => {
     let resp = await getProducts();
-    setTESTE(resp[0].fotos[0]);
-    console.log(resp);
+    if (resp !== "error") {
+      setProducts(resp);
+    }
+  };
+  const getProductsbyFilter = async () => {
+    let resp = await getFindProducts(plataformaFilter, filter);
+    if (resp !== "error") {
+      setProducts(resp);
+    }
   };
   useEffect(() => test, []);
+  useEffect(() => {
+    getProductsbyFilter();
+  }, [plataformaFilter, filter]);
   return (
     <>
       <div className="filters">
         <div className="search">
           <SearchIcon sx={{ color: "#fff", mr: 1, my: 0.5 }} />
-          <input type="text" placeholder="Buscar"></input>
+          <input
+            type="text"
+            placeholder="Buscar"
+            onChange={(e) => setFilter(e.target.value)}
+          ></input>
         </div>
         <FormControl
           variant="filled"
@@ -48,27 +63,23 @@ function ProductList() {
         </FormControl>
       </div>
       <div className="containercards">
-        <ProductCard
-          image={teste}
-          price={"99,99"}
-          title="Grand Theft Auto V"
-          plataform={["ps", "windows", "xbox"]}
-          id={1}
-        />
-        <ProductCard
-          image="https://image.api.playstation.com/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png"
-          price={"199,99"}
-          title="Red Dead Redemption 2"
-          plataform={["ps", "windows", "xbox"]}
-          id={2}
-        />
-        <ProductCard
-          image="https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000014724/72ce0a17215521a167c3da579db4cc48a2f7a52eacc81ad985ba20fd6817fdc2"
-          price={"249,99"}
-          title="Hogwarts Legacy"
-          plataform={["ps", "windows", "xbox"]}
-          id={3}
-        />
+        {products.length > 0 ? (
+          products.map((value, index) => {
+            return (
+              <ProductCard
+                key={index + value.id}
+                image={value.imagem}
+                price={value.valor}
+                title={value.titulo}
+                plataform={value.plataformas}
+                description={value.descricao}
+                id={value.id}
+              />
+            );
+          })
+        ) : (
+          <div>Sem Produtos</div>
+        )}
       </div>
     </>
   );

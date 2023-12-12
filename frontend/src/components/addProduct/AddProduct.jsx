@@ -13,6 +13,9 @@ import {
   Select,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { errorNotification, successNotification } from "../notification";
+import { useNavigate } from "react-router-dom";
+
 const ListItem = styled("li")(({ theme }) => ({
   margin: theme.spacing(0.5),
 }));
@@ -31,6 +34,7 @@ const MenuProps = {
 const plataforma = ["PC", "Xbox", "Playstation"];
 
 function AddProduct() {
+  const navigate = useNavigate();
   const { createProduct } = useContext(ApiContext);
   const [chipData, setChipData] = useState([]);
   const [tag, setTag] = useState("");
@@ -50,21 +54,32 @@ function AddProduct() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", e.target[4].files[0]);
+    let tags = "";
+    chipData.forEach((value) => {
+      tags = tags + "#" + value.label;
+    });
     let values = {
       titulo: e.target[0].value,
       descricao: e.target[1].value,
       valor: e.target[2].value,
       categoria: e.target[3].value,
-      fotos: formData,
+      plataformas: personName,
+      fotos: [""],
+      tags,
     };
     let resp = await createProduct(values);
 
-    // if (resp === "success") {
-    //   successNotification("Conta criada com sucesso!");
-    //   navigate(0);
-    // } else {
-    //   errorNotification("Erro ao criar conta!", "Por favor, tente novamente.");
-    // }
+    if (resp === "success") {
+      successNotification("Produto criado com sucesso!");
+      setTimeout(() => {
+        navigate(0);
+      }, 300);
+    } else {
+      errorNotification(
+        "Erro ao criar Produto!",
+        "Por favor, tente novamente."
+      );
+    }
   };
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) =>
@@ -96,7 +111,14 @@ function AddProduct() {
         </div>
         <div className="inputAddProductContainer">
           <label>Valor (R$)</label>
-          <input name="valor" required type="number" />
+          <input
+            name="valor"
+            required
+            type="number"
+            min="1"
+            max="9999"
+            step=".01"
+          />
         </div>
         <div className="inputAddProductContainer">
           <label>Categoria</label>
@@ -124,6 +146,7 @@ function AddProduct() {
               renderValue={(selected) => selected.join(", ")}
               MenuProps={MenuProps}
               sx={{ color: "#fff" }}
+              required
             >
               {plataforma.map((name) => (
                 <MenuItem key={name} value={name}>
@@ -149,7 +172,6 @@ function AddProduct() {
             >
               <input
                 name="tags"
-                required
                 type="text"
                 onChange={(e) => setTag(e.target.value)}
                 value={tag}

@@ -7,7 +7,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import { useContext, useState } from "react";
 import { CartContex } from "../../context/CartContext";
 
-function ProductCard({ image, price, plataform, title, id }) {
+function ProductCard({ image, price, plataform, title, id, description }) {
   const [cartIcon, setCartIcon] = useState(<AddShoppingCartIcon />);
   const [cartStyleAdd, setCartStyleAdd] = useState({});
   const { saveCartItem } = useContext(CartContex);
@@ -18,6 +18,7 @@ function ProductCard({ image, price, plataform, title, id }) {
       plataform,
       id,
       image,
+      description,
     });
 
     setCartIcon(<CheckIcon />);
@@ -39,17 +40,22 @@ function ProductCard({ image, price, plataform, title, id }) {
           <div className="containerPlataformaIcon">
             {plataform.map((value, index) => {
               let icon = windows;
-              if (value === "ps") {
+              if (value === "Playstation") {
                 icon = ps;
               }
-              if (value === "xbox") {
+              if (value === "Xbox") {
                 icon = xbox;
               }
               return (
-                <img key={index + image} className="pataformaicon" src={icon} />
+                <img
+                  key={index + title + id}
+                  className="pataformaicon"
+                  src={icon}
+                />
               );
             })}
           </div>
+          <p>{description}</p>
         </div>
         <button
           className="cartButton"

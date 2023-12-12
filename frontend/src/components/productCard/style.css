@@ -27,6 +27,13 @@
     text-overflow: ellipsis;
 }
 
+.productCard p {
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 8pt;
+    text-overflow: ellipsis;
+}
+
 .descriptionContainer {
     display: flex;
     height: 100%;
