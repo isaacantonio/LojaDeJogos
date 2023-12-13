@@ -9,6 +9,7 @@ import "@fontsource/roboto/700.css";
 import { CartProvider } from "./context/CartContext.jsx";
 import { ApiProvider } from "./context/Api.jsx";
 import { ReactNotifications } from "react-notifications-component";
+import { Link } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

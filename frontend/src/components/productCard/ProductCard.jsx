@@ -55,7 +55,7 @@ function ProductCard({ image, price, plataform, title, id, description }) {
               );
             })}
           </div>
-          <p>{description}</p>
+          <p title={description}>{description}</p>
         </div>
         <button
           className="cartButton"

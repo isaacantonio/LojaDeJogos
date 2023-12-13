@@ -9,7 +9,7 @@ import {
 import Header from "../components/header/Header";
 
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 function Home() {
   return (
@@ -24,6 +24,14 @@ function Home() {
         }}
       >
         <Outlet />
+      </div>
+      <div className="footer">
+        <Link to={"/"}>
+          <p>Loja de Jogos</p>
+        </Link>
+        <Link to={"sobrenos"}>
+          <p>Sobre Nós</p>
+        </Link>
       </div>
     </div>
   );

@@ -122,3 +122,11 @@
 .css-i4bv87-MuiSvgIcon-root {
     color: #fff !important;
 }
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 32px;
+    border-top: 1px solid #1d2631;
+    box-shadow: 0 2px 7px #0000004d;
+}

@@ -28,6 +28,10 @@ const router = createBrowserRouter([
         path: "/meuspedidos",
         element: <ListOrders />,
       },
+      {
+        path: "/sobrenos",
+        element: <SobreNos />,
+      },
     ],
   },
   {
@@ -45,5 +49,33 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+function SobreNos() {
+  return (
+    <div style={{ width: "60%" }}>
+      <h2>Quem somos?</h2>
+      <p>
+        Nós, João Pedro e Isaac Barbosa, somos estudante do curso de engenharia
+        de computação na instituição do IFPB campus Campina Grande na Paraíba
+        decidimos fazer uma loja de jogos online onde fornecemos keys para
+        ativação nas plataformas: Steam, Playstation Store e Xbox Store.
+        Trabalhamos apenas com ativação por keys, não possuimos produtos fisicos
+        ou estoque de jogos de mídia fisica.{" "}
+      </p>
+      <div>
+        <div>
+          <h3>Email</h3>
+          <span>
+            João Pedro: <a>joao.correa@academico.ifpb.edu.br</a>
+          </span>
+          <br />
+          <span>
+            Isaac Barbosa: <a>isaac.barbosa@academico.ifpb.edu.br</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default router;
