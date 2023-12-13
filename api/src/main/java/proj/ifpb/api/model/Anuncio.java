@@ -1,5 +1,6 @@
 package proj.ifpb.api.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ public class Anuncio {
     private List<String> plataformas;
 
     @Lob
+    @Column(length = 10485760)
     private byte[] foto;
 
     private String tags;
