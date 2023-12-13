@@ -53,21 +53,18 @@ function AddProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("file", e.target[4].files[0]);
+    formData.append("foto", e.target[4].files[0]);
     let tags = "";
     chipData.forEach((value) => {
       tags = tags + "#" + value.label;
     });
-    let values = {
-      titulo: e.target[0].value,
-      descricao: e.target[1].value,
-      valor: e.target[2].value,
-      categoria: e.target[3].value,
-      plataformas: personName,
-      fotos: [""],
-      tags,
-    };
-    let resp = await createProduct(values);
+    formData.append("titulo", e.target[0].value);
+    formData.append("descricao", e.target[1].value);
+    formData.append("valor", e.target[2].value);
+    formData.append("categoria", e.target[3].value);
+    formData.append("plataformas", personName);
+    formData.append("tags", tags);
+    let resp = await createProduct(formData);
 
     if (resp === "success") {
       successNotification("Produto criado com sucesso!");
