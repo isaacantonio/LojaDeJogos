@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 
 import java.math.BigDecimal;
+import java.util.Base64;
 import java.util.List;
 
 @Entity
@@ -102,6 +103,10 @@ public class Anuncio {
 
     public void setFoto(byte[] bytes) {
         this.foto = bytes;
+    }
+
+    public String getFoto() {
+        return Base64.getEncoder().encodeToString(this.foto);
     }
 
 }
