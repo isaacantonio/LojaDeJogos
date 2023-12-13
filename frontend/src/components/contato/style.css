@@ -1,0 +1,27 @@
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    width: 400px;
+    margin: 16px;
+    gap: 26px;
+    background-color: #202B39;
+    border-radius: 12px;
+}
+
+.inputContainer input {
+    height: 40px;
+    font-size: 20px;
+}
+
+@media (max-width: 500px) {
+    .formContainer {
+        width: 280px;
+    }
+}

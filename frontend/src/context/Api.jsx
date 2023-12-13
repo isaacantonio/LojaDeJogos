@@ -25,6 +25,16 @@ export function ApiProvider({ children }) {
     }
   };
 
+  const sendEmail = async (data) => {
+    try {
+      await axios.post(baseurl + "enviar-email", data);
+      return "success";
+    } catch (error) {
+      console.log(error);
+      return "error";
+    }
+  };
+
   const getProducts = async () => {
     try {
       let resp = await axios.get(baseurl + "anuncios/listar");
@@ -121,6 +131,7 @@ export function ApiProvider({ children }) {
         createOrder,
         getFindProducts,
         getOrderById,
+        sendEmail,
       }}
     >
       {children}

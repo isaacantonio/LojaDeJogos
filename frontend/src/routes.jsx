@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import AddProduct from "./components/addProduct/AddProduct";
 import Allproducts from "./components/allProducts/AllProducts";
 import { ListOrders } from "./components/listOrders/ListOrders";
+import ContatoForm from "./components/contato/ContatoForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/sobrenos",
         element: <SobreNos />,
+      },
+      {
+        path: "/contato",
+        element: <ContatoForm />,
       },
     ],
   },

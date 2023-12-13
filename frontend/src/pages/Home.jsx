@@ -32,6 +32,9 @@ function Home() {
         <Link to={"sobrenos"}>
           <p>Sobre Nós</p>
         </Link>
+        <Link to={"contato"}>
+          <p>Contato</p>
+        </Link>
       </div>
     </div>
   );
