@@ -46,7 +46,6 @@ public class AnuncioService {
             anuncioExistente.setDescricao(anuncioAtualizado.getDescricao());
             anuncioExistente.setValor(anuncioAtualizado.getValor());
             anuncioExistente.setCategoria(anuncioAtualizado.getCategoria());
-            anuncioExistente.setFotos(anuncioAtualizado.getFotos());
             return anuncioRepository.save(anuncioExistente);
         } else {
             return null;
@@ -55,5 +54,9 @@ public class AnuncioService {
 
     public List<Anuncio> buscarPorPlataformaEFiltro(String plataforma, String filtro) {
         return anuncioRepository.buscarPorPlataformaEFiltro(plataforma, filtro);
+    }
+
+    public Optional<Anuncio> buscarPorId(Long id) {
+        return anuncioRepository.findById(id);
     }
 }

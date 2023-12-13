@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -21,21 +22,21 @@ public class Anuncio {
     private String categoria;
 
     @ElementCollection
-    private List<String> plataformas; // Modificado para ser uma lista de strings
+    private List<String> plataformas;
 
-    @ElementCollection
-    private List<String> fotos;
+    @Lob
+    private byte[] foto;
+
     private String tags;
 
     public Anuncio() {
     }
 
-    public Anuncio(String titulo, String descricao, BigDecimal valor,
-            List<String> fotos, List<String> plataformas, String categoria, String tags) {
+    public Anuncio(String titulo, String descricao, BigDecimal valor, List<String> plataformas, String categoria,
+            String tags) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.valor = valor;
-        this.fotos = fotos;
         this.plataformas = plataformas;
         this.categoria = categoria;
         this.tags = tags;
@@ -89,14 +90,6 @@ public class Anuncio {
         this.categoria = categoria;
     }
 
-    public List<String> getFotos() {
-        return fotos;
-    }
-
-    public void setFotos(List<String> fotos) {
-        this.fotos = fotos;
-    }
-
     public String getTags() {
         return tags;
     }
@@ -104,4 +97,9 @@ public class Anuncio {
     public void setTags(String tags) {
         this.tags = tags;
     }
+
+    public void setFoto(byte[] bytes) {
+        this.foto = bytes;
+    }
+
 }
