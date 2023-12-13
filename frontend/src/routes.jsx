@@ -6,6 +6,7 @@ import Cart from "./pages/Cart";
 import Dashboard from "./pages/Dashboard";
 import AddProduct from "./components/addProduct/AddProduct";
 import Allproducts from "./components/allProducts/AllProducts";
+import { ListOrders } from "./components/listOrders/ListOrders";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/meuspedidos",
+        element: <ListOrders />,
       },
     ],
   },

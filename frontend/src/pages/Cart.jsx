@@ -21,22 +21,24 @@ function Cart() {
       cartStore.forEach((value) => {
         ids.push(value.id);
       });
-      // let resp = await createOrder({
-      //   anuncioIds: ids,
-      //   clienteId: user.id,
-      //   status: "Pendente",
-      // });
+      let resp = await createOrder({
+        anuncioIds: ids,
+        clienteId: user.id,
+        status: "Pendente",
+      });
       // console.log(resp);
       removeAllCartItem();
-      successNotification(
-        "Pedido feito com sucesso!",
-        "Para ver seus pedidos, acesse a aba de 'Meus Pedidos'."
-      );
-    } else {
-      errorNotification(
-        "Erro ao finalizar pedido",
-        "Por favor, faça login para continuar."
-      );
+      if (resp === "success") {
+        successNotification(
+          "Pedido feito com sucesso!",
+          "Para ver seus pedidos, acesse a aba de 'Meus Pedidos'."
+        );
+      } else {
+        errorNotification(
+          "Erro ao finalizar pedido",
+          "Por favor, faça login para continuar."
+        );
+      }
     }
   };
   return (

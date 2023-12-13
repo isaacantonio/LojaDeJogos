@@ -15,7 +15,7 @@ function ProductCart({ data }) {
       onMouseLeave={() => setEnter(false)}
     >
       <div className="productCartTitle">
-        <img src={product.image} />
+        <img src={`data:image/jpeg;base64,${product.image}`} />
         <div style={{ width: "100%" }}>
           <h1>{product.title}</h1>
           <div className="containerPlataformaIcon">

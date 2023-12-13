@@ -68,7 +68,7 @@ function ProductList() {
             return (
               <ProductCard
                 key={index + value.id}
-                image={value.imagem}
+                image={value.foto}
                 price={value.valor}
                 title={value.titulo}
                 plataform={value.plataformas}

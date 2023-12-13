@@ -35,6 +35,18 @@ export function ApiProvider({ children }) {
     }
   };
 
+  const getOrderById = async (id) => {
+    try {
+      let resp = await axios.get(
+        baseurl + "pedidos/usuario/" + id + "/pedidos"
+      );
+      return resp.data;
+    } catch (error) {
+      console.log(error);
+      return "error";
+    }
+  };
+
   const getFindProducts = async (plataforma, filter) => {
     try {
       let rota =
@@ -108,6 +120,7 @@ export function ApiProvider({ children }) {
         deleteProduct,
         createOrder,
         getFindProducts,
+        getOrderById,
       }}
     >
       {children}

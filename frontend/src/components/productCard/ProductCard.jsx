@@ -32,7 +32,7 @@ function ProductCard({ image, price, plataform, title, id, description }) {
   return (
     <div className="productCard">
       <div className="cardImage">
-        <img src={image} />
+        <img src={`data:image/jpeg;base64,${image}`} />
       </div>
       <div className="descriptionContainer">
         <div>
