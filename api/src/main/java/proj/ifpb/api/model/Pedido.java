@@ -43,6 +43,10 @@ public class Pedido {
         return id;
     }
 
+    public BigDecimal getValorTotal() {
+        return this.valor;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

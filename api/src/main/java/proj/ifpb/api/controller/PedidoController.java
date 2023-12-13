@@ -8,7 +8,9 @@ import proj.ifpb.api.model.Usuario;
 import proj.ifpb.api.service.PedidoService;
 import proj.ifpb.api.service.UsuarioService;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -104,5 +106,59 @@ public class PedidoController {
         public void setStatus(String status) {
             this.status = status;
         }
+    }
+
+    @GetMapping("/usuario/{clienteId}/pedidos")
+    public ResponseEntity<List<PedidoInfo>> infoDosPedidos(@PathVariable Long clienteId) {
+        Usuario cliente = usuarioService.buscarPorId(clienteId);
+
+        if (cliente != null) {
+            List<Pedido> pedidos = pedidoService.obterPedidosPorCliente(cliente);
+
+            List<PedidoInfo> pedidosInfo = pedidos.stream()
+                    .map(pedido -> new PedidoInfo(pedido.getId(), pedido.getStatus(), pedido.getValorTotal()))
+                    .collect(Collectors.toList());
+
+            return ResponseEntity.ok(pedidosInfo);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    public class PedidoInfo {
+        private Long id;
+        private String status;
+        private BigDecimal valorTotal;
+
+        public PedidoInfo(Long id, String status, BigDecimal valorTotal) {
+            this.id = id;
+            this.status = status;
+            this.valorTotal = valorTotal;
+        }
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
+        public BigDecimal getValorTotal() {
+            return valorTotal;
+        }
+
+        public void setValorTotal(BigDecimal valorTotal) {
+            this.valorTotal = valorTotal;
+        }
+
     }
 }
